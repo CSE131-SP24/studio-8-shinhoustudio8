@@ -3,11 +3,14 @@ package studio8;
 import java.util.Scanner;
 
 public class Quiz {
+	
+	private int pointsEarned; 
 
 	private Question[] questions;
 	
 	public Quiz(Question[] questions) {
 		this.questions = questions;
+		pointsEarned = 0; 
 	}
 	
 	private String getUserAnswer() {
@@ -27,6 +30,11 @@ public class Quiz {
 	
 	public void takeQuiz() {
 		//FIXME
+		for (Question i:questions) {
+			i.displayPrompt();
+			pointsEarned += i.checkAnswer(getUserAnswer()); 
+		}
+		
 	}
 	
 	public static void main(String[] args) {
